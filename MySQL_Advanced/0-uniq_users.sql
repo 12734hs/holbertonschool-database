@@ -1,3 +1,4 @@
+--create a table
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER NOT NULL AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL,
@@ -5,3 +6,4 @@ CREATE TABLE IF NOT EXISTS users (
   PRIMARY KEY(id),
   UNIQUE (email)
 );
+
