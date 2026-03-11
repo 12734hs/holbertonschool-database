@@ -1,5 +1,3 @@
--- create table users
-
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER NOT NULL AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL,
