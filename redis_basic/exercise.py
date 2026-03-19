@@ -14,8 +14,11 @@ class Cache:
         """
         this method initialize the Cache system in the project where it were called
         """
-        self._redis = redis.Redis(host = 'localhost', port=6379, decode_responses=True)
-        self._redis.flushdb()
+        if redis is None:
+            self._redis = None
+        else:
+            self._redis = redis.Redis(host = 'localhost', port=6379, decode_responses=True)
+            self._redis.flushdb()
 
 
     def store(self, data: Union[str, int, float, bytes]) -> str:
