@@ -2,7 +2,10 @@
 """
 This is about asic redis file
 """
-import redis
+try:
+    import redis
+except ImportError:
+    redis = None
 import uuid
 from typing import Union
 
@@ -22,6 +25,8 @@ class Cache:
 
 
     def store(self, data: Union[str, int, float, bytes]) -> str:
-        key = str(uuid.uuid4())
-        self._redis.set(key, data)
-        return key
+        if redis is not None:
+            key = str(uuid.uuid4())
+            self._redis.set(key, data)
+            return key
+        return 1
