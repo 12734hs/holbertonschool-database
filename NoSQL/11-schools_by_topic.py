@@ -8,4 +8,4 @@ def update_topics(mongo_collection, topic):
     this is documentation, idk why we need it there
     so, this functions gets a collection, go through it and trying to find the suitabile data
     """
-    return mongo_collection.find({"topics": topic})
+    return list(mongo_collection.find({"topics": topic}))
