@@ -2,10 +2,7 @@
 """
 This is about asic redis file
 """
-try:
-    import redis
-except ImportError:
-    redis = None
+import redis
 import uuid
 from typing import Union, Callable, Optional, Any
 
@@ -28,25 +25,18 @@ class Cache:
         """
         This method store key-value pair in memory Redis
         """
-        if redis is not None:
-            key = str(uuid.uuid4())
-            self._redis.set(key, data)
-            return key
-        return 1
+        key = str(uuid.uuid4())
+        self._redis.set(key, data)
+        return key
 
 
     def get(self, key: str, fn: Optional[Callable[[bytes], Any]] = None) -> Any:
         """
         This method returns the Value of the Key, and implement function if it was given
         """
-        if redis is not None:
-            value = self._redis.get(key)
-            if value is None:
-                return None
-            if fn:
-                return fn(value)
-            return value
-        return 1
+        value = self._redis.get(key)
+        return value
+
 
     def get_str(self, key: str) -> Optional[str]:
         """
