@@ -63,10 +63,11 @@ class Cache:
 
     def __init__(self) -> None:
         """
-        this method initialize the Cache system in the project where it were called
+        this method initialize the Cache system
+        in the project where it were called
         """
 
-        self._redis = redis.Redis(host = 'localhost', port=6379)
+        self._redis = redis.Redis(host='localhost', port=6379)
         self._redis.flushdb()
 
     @count_calls
@@ -78,11 +79,11 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
-
-
-    def get(self, key: str, fn: Optional[Callable[[bytes], Any]] = None) -> Any:
+    s = Optional[Callable[[bytes], Any]] = None
+    def get(self, key: str, fn: s) -> Any:
         """
-        This method returns the Value of the Key, and implement function if it was given
+        This method returns the Value of the Key,
+        and implement function if it was given
         """
         value = self._redis.get(key)
         if value is None:
