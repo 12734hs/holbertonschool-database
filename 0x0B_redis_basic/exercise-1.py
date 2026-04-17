@@ -33,7 +33,9 @@ class Cache:
         This method returns the Value of the Key, and implement function if it was given
         """
         value = self._redis.get(key)
-        if fn:
+        if value is None:
+            return None
+        if fn is not None:
             return fn(value)
         return value
 
