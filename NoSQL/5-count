@@ -1,0 +1,3 @@
+// this file is about to show numbers pf documents in our mongodb db
+db.school.countDocuments()
+
