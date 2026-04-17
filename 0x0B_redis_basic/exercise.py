@@ -79,8 +79,8 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
-    s = Optional[Callable[[bytes], Any]] = None
-    def get(self, key: str, fn: s) -> Any:
+
+    def get(self, key: str, fn: Optional[Callable[[bytes], Any]] = None)-> Any:
         """
         This method returns the Value of the Key,
         and implement function if it was given
