@@ -1,2 +1,2 @@
 // in this file we write he script for creating a insert action
-db.school.insertOne({name: "Holberton school"})
+db.school.insert({name: "Holberton school"})
