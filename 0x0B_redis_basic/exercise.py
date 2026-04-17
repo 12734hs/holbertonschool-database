@@ -14,14 +14,12 @@ class Cache:
         """
         this method initialize the Cache system in the project where it were called
         """
-        if redis is None:
-            self._redis = None
-        else:
-            self._redis = redis.Redis(host = 'localhost', port=6379)
-            self._redis.flushdb()
+
+        self._redis = redis.Redis(host = 'localhost', port=6379)
+        self._redis.flushdb()
 
 
-    def store(self, data: Union[str, bytes, int, float]) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> Union[str, int]:
         """
         This method store key-value pair in memory Redis
         """
@@ -35,8 +33,11 @@ class Cache:
         This method returns the Value of the Key, and implement function if it was given
         """
         value = self._redis.get(key)
+        if value is None:
+            return None
+        if fn is not None:
+            return fn(value)
         return value
-
 
     def get_str(self, key: str) -> Optional[str]:
         """
