@@ -80,7 +80,11 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable[[bytes], Any]] = None) -> Any:
+    def get(
+            self,
+            key: str,
+            fn: Optional[Callable[[bytes], Any]] = None
+    ) -> Any:
         """
         This method returns the Value of the Key,
         and implement function if it was given
