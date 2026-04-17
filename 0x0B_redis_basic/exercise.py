@@ -21,7 +21,7 @@ class Cache:
             self._redis.flushdb()
 
 
-    def store(self, data: Union[str, bytes, int, float]) -> Union[str, int]:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         This method store key-value pair in memory Redis
         """
