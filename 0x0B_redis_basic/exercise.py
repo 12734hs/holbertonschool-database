@@ -69,7 +69,8 @@ class Cache:
         self._redis = redis.Redis(host = 'localhost', port=6379)
         self._redis.flushdb()
 
-
+    @count_calls
+    @call_history
     def store(self, data: Union[str, bytes, int, float]) -> Union[str, int]:
         """
         This method store key-value pair in memory Redis
